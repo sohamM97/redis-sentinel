@@ -19,5 +19,16 @@ services:
     ports:
     - "6392:6379"
 
+  redis-sentinel:
+    image: redis-sentinel
+    build:
+      dockerfile: Dockerfile.sentinel
+    depends_on:
+    - redis-master
+    networks:
+    - redis-network
+    deploy:
+      replicas: 3
+
 networks:
   redis-network:
