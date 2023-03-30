@@ -29,6 +29,8 @@ services:
     - redis-network
     deploy:
       replicas: 3
+    ports:
+    - "26379-26381:26379"
 
 networks:
   redis-network:
