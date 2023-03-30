@@ -1,3 +1,4 @@
 FROM redis
 COPY sentinel.conf /usr/local/etc/redis/sentinel.conf
+RUN chmod -R 777 /usr/local/etc/redis/
 CMD [ "redis-sentinel", "/usr/local/etc/redis/sentinel.conf" ]
