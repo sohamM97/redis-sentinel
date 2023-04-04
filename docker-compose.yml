@@ -7,6 +7,9 @@ services:
     - redis-network
     ports:
     - "6391:6379"
+    # # Uncomment the following for setting up SSL with certificates
+    # volumes:
+    # - /home/soham/tests/tls:/usr/local/etc/redis/certs
 
   redis-slave:
     image: redis-slave
@@ -18,6 +21,8 @@ services:
     - redis-network
     ports:
     - "6392:6379"
+    # volumes:
+    # - /home/soham/tests/tls:/usr/local/etc/redis/certs
 
   redis-sentinel:
     image: redis-sentinel
@@ -31,6 +36,8 @@ services:
       replicas: 3
     ports:
     - "26379-26381:26379"
+    # volumes:
+    # - /home/soham/tests/tls:/usr/local/etc/sentinel/certs
 
 networks:
   redis-network:
